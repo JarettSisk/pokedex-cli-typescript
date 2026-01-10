@@ -5,7 +5,15 @@ import { initState } from "./state.js";
 
 async function main() {
   const state = initState();
-  startREPL(state);
+  try {
+    await startREPL(state);
+  } catch (error) {
+      if(error instanceof Error) {
+            console.error(error.message);
+      } else {
+        console.error("An unknown error occurred:", error);
+      }
+  }
 }
 
-main();
+await main();

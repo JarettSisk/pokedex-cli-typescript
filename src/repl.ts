@@ -8,9 +8,9 @@ export function cleanInput(input: string): string[] {
     return input.toLowerCase().trim().split(" ").filter(item => item);
 }
 
-export const startREPL = (state: State) => {
-
+export const startREPL = async (state: State) => {
     state.readline.prompt();
+
     state.readline.on('line', (input) => {
         const cleanedInput = cleanInput(input)[0];
         if(!cleanedInput) {
